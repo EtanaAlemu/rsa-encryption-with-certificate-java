@@ -8,6 +8,7 @@ import java.security.PublicKey;
 import java.security.Signature;
 import java.util.Base64;
 import java.util.Enumeration;
+
 /**
  * RSA class for cryptographic operations using the RSA algorithm.
  * The class supports encryption, decryption, digital signing, and signature verification.
@@ -30,15 +31,16 @@ import java.util.Enumeration;
  * - Ensure that the keystore file contains a valid RSA key pair with the specified alias.
  * - Use this class as a reference for integrating RSA cryptography into your applications.
  *
- * @author [Etana Alemu]
+ * @author Etana Alemu
  * @version 1.0
- * @since [30/12/2023]
+ * @since 30/12/2023
  */
 public class RSA {
 
     // Class members for public and private keys.
     static PublicKey publicKey;
     static PrivateKey privateKey;
+
     /**
      * Main method for executing RSA cryptographic operations.
      *
@@ -59,9 +61,9 @@ public class RSA {
         String payload = args[4];
 
         try {
-
             System.out.println("Original Message: " + payload);
             loadKeystoreTrustStore(keystorePath, keystorePassword, alias);
+
             switch (operation) {
                 case "encrypt":
                     // Encrypt the message
@@ -81,13 +83,7 @@ public class RSA {
                 case "verify":
                     // Verify the signature
                     boolean verified = verifyPayload(Base64.getDecoder().decode(payload), payload);
-                    if (verified) {
-                        // Signature is valid
-                        System.out.println("Signature is valid");
-                    } else {
-                        // Signature is invalid
-                        System.out.println("Signature is invalid");
-                    }
+                    System.out.println("Signature is " + (verified ? "valid" : "invalid"));
                     break;
                 default:
                     System.out.println("Invalid operation. Supported operations: encrypt, decrypt, sign, verify");
@@ -132,6 +128,7 @@ public class RSA {
             return null;
         }
     }
+
     /**
      * Verifies the signature of a payload using the SHA256withRSA algorithm.
      *
@@ -150,6 +147,7 @@ public class RSA {
             return false;
         }
     }
+
     /**
      * Signs a payload using the SHA256withRSA algorithm.
      *
@@ -167,6 +165,7 @@ public class RSA {
             return null;
         }
     }
+
     /**
      * Loads the keystore and retrieves public and private keys.
      *
@@ -195,7 +194,6 @@ public class RSA {
             System.out.println("PublicKey Algorithm: " + publicKey.getAlgorithm());
             System.out.println("PublicKey Format: " + publicKey.getFormat());
             System.out.println("PublicKey Encoded: " + Base64.getEncoder().encodeToString(publicKey.getEncoded()));
-
 
         } catch (Exception e) {
             e.printStackTrace();

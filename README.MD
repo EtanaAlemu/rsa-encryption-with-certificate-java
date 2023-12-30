@@ -48,9 +48,9 @@ The scripts `key-gen.bat` and `key-gen.sh` are provided for convenient RSA key p
    rem Store file paths in variables
    set "private_key_file=cert1.private.key"
    set "public_certificate_file=cert1.public.crt"
-   set "password=4bf5bdc900fbf6e6506be4b052bf2d99"
-   set "keystore_file=card_management_keystore.p12"
-   set "alias=mobile_card_management"
+   set "password=mypassword"
+   set "keystore_file=keystore.p12"
+   set "alias=myalias"
    
    rem Generate private key and self-signed certificate
    openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout "%private_key_file%" -out "%public_certificate_file%"  -subj "/CN=Mobile Card Management/OU=DxValley/O=Cooperative Bank of Oromia/L=Addis Ababa/ST=Addis Ababa/C=ET"
@@ -67,9 +67,9 @@ The scripts `key-gen.bat` and `key-gen.sh` are provided for convenient RSA key p
    # Store passwords in variables
    private_key_file="cert1.private.key"
    public_certificate_file="cert1.public.crt"
-   password="4bf5bdc900fbf6e6506be4b052bf2d99"
-   keystore_file="card_management_keystore.p12"
-   alias="mobile_card_management"
+   password="mypassword"
+   keystore_file="keystore.p12"
+   alias="myalias"
    
    # Generate private key and self-signed certificate
    openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout "$private_key_file" -out "$public_certificate_file" -subj "/CN=Mobile Card Management/OU=DxValley/O=Cooperative Bank of Oromia/L=Addis Ababa/ST=Addis Ababa/C=ET"
