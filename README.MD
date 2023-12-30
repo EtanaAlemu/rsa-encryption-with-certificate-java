@@ -97,28 +97,12 @@ key-gen.bat
 - Right-click on the class and select "Run <YourClassName>.main()".
 - In the top menu, go to "Run" > "Edit Configurations..."
 - In the "Run/Debug Configurations" dialog, find your application configuration under the "Application" section.
-- In the "Configuration" tab, enter the desired command-line arguments in the "Program arguments" field.
+- In the "Configuration" tab, find the "Program arguments" field.
+- Enter the command-line arguments you want to pass to your `main` method. Each argument should be separated by a space.
 - Click "OK" to save the configuration.
+- Now, when you run your application, IntelliJ IDEA will pass the specified command-line arguments to the `main` method.
 
-## Build and Run
-
-To build the application, you can use the following commands:
-
-```bash
-   # Compile the source code
-   javac RSA.java
-   
-   # Create a JAR file
-   jar cf RSA.jar RSA.class
-```
-
-To run the application, use the following command:
-
-
-```bash
-   # Example: Encrypt a message
-   java -cp RSA.jar com.dxvalley.RSA <keystore_path> <keystore_password> <alias> encrypt "Hello, World!"
-```
+## Arguments
 
 The tool accepts the following command-line arguments:
 
@@ -127,6 +111,42 @@ The tool accepts the following command-line arguments:
 3. `<alias>`: Alias of the RSA key pair within the keystore.
 4. `<operation>`: The operation to perform. Supported values: `encrypt`, `decrypt`, `sign`, `verify`.
 5. `<message>`: The message or payload to be processed.
+
+## Build Artifact in IntelliJ IDEA
+
+1. Open your project in IntelliJ IDEA.
+2. Go to "File" > "Project Structure."
+3. In the Project Structure dialog, select "Artifacts" on the left.
+4. Click the "+" icon and choose "JAR" > "From modules with dependencies."
+5. Configure the JAR settings, including the main class (e.g., `com.dxvalley.RSA`).
+6. Build the artifact by selecting "Build" > "Build Project" and then "Build" > "Build Artifacts."
+7. In the dropdown menu, select the name of your artifact (e.g., `RSA:jar`). 
+8. Choose the desired build action (e.g., "Build"). 
+9. IntelliJ IDEA will build the JAR artifact, and you can find it in the `out` directory or the directory you specified.
+
+
+## Build JAR in IntelliJ IDEA
+1. Open IntelliJ IDEA and ensure your project is loaded. 
+2. In the IntelliJ IDEA menu, go to "View" and select "Tool Windows" > "Project" to open the Project tool window. 
+3. Locate your RSA.java file in the project explorer. 
+4. Right-click on RSA.java and select "Open in Terminal."
+5. In the terminal, run the following commands to compile your Java code and create a JAR file:
+   ```bash
+      # Compile the source code
+      javac RSA.java
+      
+      # Create a JAR file
+      jar cf RSA.jar RSA.class
+   ```
+This will create a JAR file named RSA.jar in the same directory as your source code.
+
+## Run
+To run the application, use the following command:
+
+```bash
+   # Example: Encrypt a message
+   java -cp RSA.jar com.dxvalley.RSA <keystore_path> <keystore_password> <alias> encrypt "Hello, World!"
+```
 
 Replace the placeholders `<keystore_path>`, `<keystore_password>`, `<alias>`, and `<message>` with your actual values. Adjust the <operation> argument based on the operation you want to perform.
 
