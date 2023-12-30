@@ -91,6 +91,14 @@ key-gen.bat
 ```bash
 ./key-gen.sh
 ```
+## Configuring IntelliJ IDEA for Command-Line Arguments:
+- Open your project in IntelliJ IDEA.
+- Locate the `main` method of your Java class (the class containing `public static void main(String[] args)`).
+- Right-click on the class and select "Run <YourClassName>.main()".
+- In the top menu, go to "Run" > "Edit Configurations..."
+- In the "Run/Debug Configurations" dialog, find your application configuration under the "Application" section.
+- In the "Configuration" tab, enter the desired command-line arguments in the "Program arguments" field.
+- Click "OK" to save the configuration.
 
 ## Build and Run
 
